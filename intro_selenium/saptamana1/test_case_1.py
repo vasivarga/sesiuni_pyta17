@@ -1,11 +1,11 @@
 import time
 
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 
 # Test case: Pagina afiseaza titlul corect
 
-# Pasii: Navigam pe site
+# Pasii:
+# 1. Navigam pe site
 # Rezultat asteptat: titlul paginii este "elefant.ro - mallul online al familiei tale! • Branduri de top, preturi excelente • Peste 500.000 de produse pentru tine!"
 
 driver = webdriver.Chrome()
