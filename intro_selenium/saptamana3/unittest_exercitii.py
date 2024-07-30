@@ -3,6 +3,8 @@ import unittest
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class TestLogin(unittest.TestCase):
@@ -12,7 +14,7 @@ class TestLogin(unittest.TestCase):
     # open https://the-internet.herokuapp.com/
     # Click pe Form Authentication
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Firefox()
         self.driver.maximize_window()
         self.driver.get("https://the-internet.herokuapp.com/")
         self.driver.find_element(By.LINK_TEXT, "Form Authentication").click()
@@ -91,7 +93,11 @@ class TestLogin(unittest.TestCase):
         self.driver.find_element(By.CLASS_NAME, "radius").click()
         self.driver.find_element(By.CLASS_NAME, "close").click()
         locator = (By.ID, "flash")
-        assert self.is_element_absent(locator)
+
+        wait = WebDriverWait(self.driver, 10)
+        wait.until_not(expected_conditions.presence_of_element_located(locator))
+
+        self.assertTrue(self.is_element_absent(locator))
 
 
     def is_element_present(self, locator):
