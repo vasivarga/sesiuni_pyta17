@@ -19,3 +19,7 @@ def step_impl(context):
 @then('I should see "{text}" message')
 def step_impl(context, text):
     context.login_page.verify_error_text_message(text)
+
+@then('The URL of the page is "{url}"')
+def step_impl(context, url):
+    context.login_page.verify_current_url(url)

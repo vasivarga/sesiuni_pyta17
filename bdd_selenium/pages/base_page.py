@@ -1,3 +1,5 @@
+from selenium.webdriver.support.select import Select
+
 from browser import Browser
 
 
@@ -17,3 +19,7 @@ class BasePage(Browser):
 
     def verify_current_url(self, expected):
         assert self.driver.current_url == expected
+
+    def select_dropdown_text(self, locator, text):
+        dropdown = Select(self.find(locator))
+        dropdown.select_by_visible_text(text)
