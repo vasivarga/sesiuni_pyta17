@@ -1,7 +1,7 @@
 import unittest
 
-from api_requests.simple_books_api_requests import get_api_status
 
+from api_requests.simple_books_api_requests import get_api_status
 
 class TestApiStatus(unittest.TestCase):
 
